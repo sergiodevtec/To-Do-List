@@ -4,13 +4,26 @@ const listaAtividades = document.querySelector(".lista_atividades");
 const input = document.querySelector(".input");
 const erro = document.querySelector(".erro");
 const botaoCadastra = document.querySelector(".botao_adc");
+const botaoLimpar = document.querySelector(".botao_del_todos");
+const LimparLista = document.querySelector('.botao_del_todos');
 const paleta1 = document.querySelector("#paleta1");
 const paleta2 = document.querySelector("#paleta2");
 const paleta3 = document.querySelector("#paleta3");
 
+paleta1.addEventListener('click', () => definePaleta('seagreen'));
+paleta2.addEventListener('mousemove', () => definePaleta('slateblue'));
+paleta3.addEventListener('dblclick', () => definePaleta('tomato'));
+botaoCadastra.addEventListener('click', () => cadastraAtividade());
+botaoLimpar.addEventListener('click', () => removeAtividades());
+
+
 function definePaleta(cor) {
     container.style.background = cor;
     listaAtividades.style.background = cor;
+}
+
+function removeAtividade(atividade) {
+    listaAtividades.removeChild(atividade);
 }
 
 function removeAtividades() {
@@ -26,6 +39,7 @@ function criaAtividade() {
     atividade.textContent = input.value;
     const botaoLimpar = document.createElement("button");
     botaoLimpar.textContent = "Limpar";
+    botaoLimpar.addEventListener('click', () => removeAtividade(atividade));
     botaoLimpar.classList.add("botao_del");
     listaAtividades.appendChild(atividade);
     atividade.appendChild(nomeAtividade);
