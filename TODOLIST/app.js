@@ -13,6 +13,12 @@ function definePaleta(cor) {
     listaAtividades.style.background = cor;
 }
 
+function removeAtividades() {
+    while(listaAtividades.firstChild){
+        listaAtividades.removeChild(listaAtividades.firstChild);
+    }
+}
+
 function criaAtividade() {
     const atividade = document.createElement("div");
     atividade.classList.add("atividade");
